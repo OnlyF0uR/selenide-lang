@@ -257,7 +257,7 @@ mod tests {
 
     #[test]
     fn test_define() {
-        let w_path = "../../../examples/selenide/create_token";
+        let w_path = "../../examples/create_token";
         let main_path = format!("{}/main.se", w_path);
 
         let input = std::fs::read_to_string(main_path).unwrap();
