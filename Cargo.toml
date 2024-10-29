@@ -1,0 +1,34 @@
+[workspace]
+resolver = "2"
+members = [
+  # Inner libs
+  "crates/se-compiler",
+  "crates/se-vm",
+  "crates/se-opcodes",
+
+  # Executables
+  "selc"
+]
+
+[workspace.package]
+version = "0.1.0"
+
+[profile.release]
+debug = 1
+split-debuginfo = 'packed'
+strip = 'debuginfo'
+panic = 'abort'
+
+[profile.release-dbgsym]
+inherits = "release"
+split-debuginfo = 'off'
+strip = 'none'
+
+[profile.bench]
+strip = 'none'
+
+[workspace.dependencies]
+# Inner libs
+se-compiler = { path = "crates/selenide/se-compiler" }
+se-vm = { path = "crates/selenide/se-vm" }
+se-opcodes = { path = "crates/selenide/se-opcodes" }
